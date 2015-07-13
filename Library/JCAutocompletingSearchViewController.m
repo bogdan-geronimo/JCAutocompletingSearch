@@ -4,7 +4,6 @@
 @interface JCAutocompletingSearchViewController ()
 
 @property (nonatomic) BOOL loading;
-@property (strong, nonatomic) NSArray* results;
 
 @end
 

@@ -6,6 +6,7 @@
 @property (weak, nonatomic) NSObject<JCAutocompletingSearchViewControllerDelegate>* delegate;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
+@property (strong, nonatomic) NSArray* results;
 
 + (JCAutocompletingSearchViewController*) autocompletingSearchViewController;
 

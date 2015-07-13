@@ -1,6 +1,8 @@
 #import "JCAutocompletingSearchViewController.h"
 #import "JCAutocompletingSearchGenericResultCell.h"
 
+#define IS_iOS8 (NSFoundationVersionNumber>NSFoundationVersionNumber_iOS_7_1)
+
 @interface JCAutocompletingSearchViewController ()
 
 @property (nonatomic) BOOL loading;
@@ -24,6 +26,10 @@
   return (JCAutocompletingSearchViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
 }
 
+- (IBAction)cancelClicked:(id)sender {
+    [self.delegate searchControllerCanceled:self];
+}
+
 - (id) initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if (self) {
@@ -44,6 +50,17 @@
   } else {
     [self.searchBar becomeFirstResponder];
   }
+    
+    self.fakeBorder.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    // change the searchbar font
+    if(IS_iOS8) {
+        [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{
+                                                                                                     NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12],
+                                                                                                     }];
+    } else {
+        [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
+    }
 }
 
 - (void) viewDidUnload {

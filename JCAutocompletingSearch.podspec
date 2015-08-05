@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.source       = { :git => 'https://github.com/jcoleman/JCAutocompletingSearch.git', :tag => '0.9.6' }
   s.source_files = 'Library/*.{h,m}'
-  s.resources    = 'Library/JCAutocompletingSearchStoryboard.storyboard'
+  s.resources    = 'Library/*.storyboard'
 
 end
